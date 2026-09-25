@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, ref } from 'vue'
+import CommentDrawer from './components/CommentDrawer.vue'
 
 const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
@@ -36,6 +37,7 @@ const audio = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
 const progress = ref(0)
 const duration = ref(0)
+const commentsOpen = ref(false)
 let transitionTimer: ReturnType<typeof setTimeout> | undefined
 
 const activeBackground = computed(() => backgrounds[currentBackground.value])
@@ -114,6 +116,11 @@ onBeforeUnmount(() => {
     <div class="background-vignette" aria-hidden="true"></div>
     <div class="background-grain" aria-hidden="true"></div>
 
+    <button class="comments-trigger" type="button" aria-label="打开评论区" title="评论" @click="commentsOpen = true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 7.9 7.9 0 0 1-3.1-.6L4 20l1.6-5.1A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8.5 11.5h7"/></svg>
+      <span>评论</span>
+    </button>
+
     <section class="quote-overlay" aria-label="页面引言">
       <p v-for="line in activeQuote.lines" :key="line">{{ line }}</p>
       <p class="quote-signature">{{ activeQuote.signature }}</p>
@@ -161,5 +168,7 @@ onBeforeUnmount(() => {
         <span class="track-name">{{ activeBackground.track.name }}</span>
       </div>
     </aside>
+
+    <CommentDrawer :open="commentsOpen" @close="commentsOpen = false" />
   </div>
 </template>
