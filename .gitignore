@@ -1,0 +1,41 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local assets not used by the published page
+public/backgrounds/celestial-archive.png
+public/backgrounds/kosaki.png
+public/backgrounds/rainy-city.png
+public/backgrounds/shrine-night.png
+public/music/home-club.ogg
+public/music/parade.ogg
+public/music/saya-no-uta.mp3
+public/music/the-summer-ends.ogg
+public/music/vladivostok.ogg
+public/favicon.svg
+public/icons.svg
+src/assets/hero.png
+src/assets/typescript.svg
+src/assets/vite.svg
+src/counter.ts
